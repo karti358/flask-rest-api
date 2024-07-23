@@ -1,3 +1,7 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 from flask import Flask, jsonify
 from flask_smorest import Api
 from flask_migrate import Migrate
@@ -13,7 +17,7 @@ from resources.tag import blp as TagBlueprint
 from resources.user import blp as UserBlueprint
 
 
-def create_app(db_url=None):
+def create_app():
     app = Flask(__name__)
     app.config["API_TITLE"] = "Stores REST API"
     app.config["API_VERSION"] = "v1"
@@ -23,14 +27,14 @@ def create_app(db_url=None):
     app.config[
         "OPENAPI_SWAGGER_UI_URL"
     ] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
-    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or "sqlite:///data.db"
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URI", "sqlite:///data.db")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["PROPAGATE_EXCEPTIONS"] = True
     db.init_app(app)
     migrate = Migrate(app, db)
     api = Api(app)
 
-    app.config["JWT_SECRET_KEY"] = "193c4fc9-e735-45f9-b878-00e5a23138b0"
+    app.config["JWT_SECRET_KEY"] = os.environ.get("SECRET_KEY", "Kartik")
     jwt = JWTManager(app)
 
     @jwt.additional_claims_loader
