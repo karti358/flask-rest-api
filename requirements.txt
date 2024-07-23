@@ -2,7 +2,7 @@ flask
 flask-smorest
 flask-sqlalchemy
 flask-migrate
-flask-jwt-entended
+flask-jwt-extended
 python-dotenv
 marshmallow
 sqlalchemy
