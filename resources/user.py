@@ -21,11 +21,15 @@ class UserRegister(MethodView):
         
         password = pbkdf2_sha256.hash(user_data["password"])
         user = UserModel(username = user_data["username"], password = password)
+        print(UserModel.query.all())
         try:
             db.session.add(user)
             db.session.commit()
-        except SQLAlchemyError:
-            return jsonify({"message" : "Could not register. Try Later"})
+        except SQLAlchemyError as err:
+            print(err)
+            return jsonify({
+                "message" : "Could not register. Try Later"
+                })
         
         return jsonify({"message" : "User Created successfully"})
 
