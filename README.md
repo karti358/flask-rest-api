@@ -54,8 +54,8 @@ Flask REST-API is a backend REST-API implementation using Flask, SQLAlchemy, Fla
 | GET | /tag/:tag_id | To retrieve a single tag with its id |
 | POST | /tag/:tag_id | To delete a single tag with ist id |
 ### Technologies Used
-* [Flask]([https://nodejs.org/](https://flask.palletsprojects.com/en/3.0.x/)
-* [SQLAlchemy]([https://www.expresjs.org/](https://www.sqlalchemy.org/)
+* [Flask](https://flask.palletsprojects.com/en/3.0.x/)
+* [SQLAlchemy](https://www.sqlalchemy.org/)
 * [PostgreSQL](https://www.postgresql.org/)
 ### License
 This project is available for use under the Apache 2.0 License.
