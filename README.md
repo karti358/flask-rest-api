@@ -1,4 +1,3 @@
-// README.md
 # Flask REST-API
 ### Introduction
 Flask REST-API is a backend REST-API implementation using Flask, SQLAlchemy, Flask-JWT-Extended, PostgreSQL etc.
@@ -35,14 +34,25 @@ Flask REST-API is a backend REST-API implementation using Flask, SQLAlchemy, Fla
 | POST | /user/login | To login an existing user account |
 | POST | /user/logout | To logout an existing user account |
 | POST | /user/refresh | To refresh an existing refresh token of user account |
-| GET | /store | To retrieve all stores on the platform |
+| GET | /store | To retrieve details of all stores on the platform |
 | POST | /store | To add a store on the platform |
 | GET | /store/:store_id | To retrieve an existing store on platform with id |
 | DELETE | /store/:store_id | To delete an existing store on platform with id |
 
-| GET | /causes/:causeId | To retrieve details of a single cause |
-| PATCH | /api/causes/:causeId | To edit the details of a single cause |
-| DELETE | /api/causes/:causeId | To delete a single cause |
+| GET | /item | To retrieve details of a all items |
+| POST | /item | To item to the platform |
+| GET | /item/:item_id | To retrieve a single item by id |
+| DELETE | /item/:item_id | To delete a single item by id |
+| PUT | /item/:item_id | To modify a single item by id |
+
+| GET | /store/:store_id/tag | To retrieve all tags of a store |
+| POST | /store/:store_id/tag | To add a single tag to a store |
+
+| POST | /item/:item_id/tag/:tag_id | To link a tag and an item |
+| DELETE | /item/:item_id/tag/:tag_id | To unlink an already linked tag and item |
+
+| GET | /item/:item_id | To delete a single cause |
+| GET | /item/:item_id | To delete a single cause |
 ### Technologies Used
 * [NodeJS](https://nodejs.org/) This is a cross-platform runtime environment built on Chrome's V8 JavaScript engine used in running JavaScript codes on the server. It allows for installation and managing of dependencies and communication with databases.
 * [ExpressJS](https://www.expresjs.org/) This is a NodeJS web application framework.
