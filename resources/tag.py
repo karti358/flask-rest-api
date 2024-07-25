@@ -12,7 +12,7 @@ blp = Blueprint("Tags", __name__)
 
 @blp.route("/store/<string:store_id>/tag")
 class StoreTags(MethodView):
-    @jwt_required()
+    
     @blp.response(200, TagSchema(many=True))
     def get(self, store_id):
         store = StoreModel.query.get_or_404(store_id)
@@ -77,7 +77,6 @@ class ItemTags(MethodView):
 @blp.route("/tag/<string:tag_id>")
 class Tags(MethodView):
 
-    @jwt_required()
     @blp.response(200, TagSchema)
     def get(self, tag_id):
         tag = TagModel.query.get_or_404(tag_id)

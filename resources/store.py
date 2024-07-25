@@ -38,6 +38,7 @@ class StoreList(MethodView):
         stores = StoreModel.query.all()
         return stores
     
+    @jwt_required()
     @blp.arguments(StoreSchema)
     @blp.response(200, StoreSchema)
     def post(self, store_data):

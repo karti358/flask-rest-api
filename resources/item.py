@@ -14,7 +14,6 @@ blp = Blueprint("items", __name__)
 @blp.route("/item/<string:item_id>")
 class Item(MethodView):
 
-    @jwt_required()
     @blp.response(200, ItemSchema)
     def get(self, item_id):
         item = ItemModel.query.get_or_404(item_id)
@@ -31,6 +30,7 @@ class Item(MethodView):
         db.session.commit()
         return jsonify({"message" : "Deleted successfully"})
 
+    @jwt_required()
     @blp.arguments(ItemUpdateSchema)
     @blp.response(200, ItemSchema)
     def put(self, item_data, item_id):
@@ -53,7 +53,6 @@ class Item(MethodView):
 @blp.route("/item")
 class ItemList(MethodView):
     
-    @jwt_required()
     @blp.response(200, ItemSchema(many=True))
     def get(self, ):
         items = ItemModel.query.all()
